@@ -1,0 +1,20 @@
+StrictHostKeyChecking no
+
+# Keep connection alive
+Host *
+
+    ServerAliveInterval 100
+    ServerAliveCountMax 5
+
+# Name your Machine
+Host <machine_name>
+    HostName  %h
+    ProxyCommand ssh <cluster_name> -W  %h:%p
+
+    User <username>
+# Name your Cluster
+Host <cluster_name>
+    Hostname ssh.<cluster_name>
+    User <username>
+    ForwardAgent yes
+
